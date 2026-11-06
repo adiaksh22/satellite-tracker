@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Satellite Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; display: flex; height: 100vh; }
+    #side { width: 330px; padding: 12px; overflow-y: auto; background: #111; color: #eee; box-sizing: border-box; }
+    #map { flex: 1; }
+    h3, h4 { margin: 8px 0 4px; }
+    label { display: block; font-size: 12px; color: #aaa; margin-top: 6px; }
+    input, select { width: 100%; padding: 4px; box-sizing: border-box; }
+    ul { list-style: none; padding: 0; margin: 4px 0; font-size: 13px; }
+    #list { max-height: 200px; overflow-y: auto; border: 1px solid #333; }
+    #list li { cursor: pointer; padding: 3px 6px; }
+    #list li:hover { background: #234; color: #4af; }
+    #list li.active { background: #432; color: #f80; }
+    #info { font-size: 13px; line-height: 1.5; }
+    #status { font-size: 11px; color: #888; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div id="side">
+    <h3>Satellite Tracker</h3>
+
+    <label>Group</label>
+    <select id="group"></select>
+
+    <label>Search name</label>
+    <input id="q" placeholder="e.g. ISS, NOAA, STARLINK">
+
+    <label>Min inclination (°)</label>
+    <input id="minIncl" type="number" value="0" min="0" max="180">
+
+    <label>Max orbital period (min)</label>
+    <input id="maxPeriod" type="number" placeholder="no limit">
+
+    <label>Your location (lat,lon)</label>
+    <input id="loc" value="37.34,-121.89">
+
+    <div id="status"></div>
+    <ul id="list"></ul>
+
+    <h4>Orbital parameters</h4>
+    <div id="info">Click a satellite.</div>
+
+    <h4>Upcoming passes (local time)</h4>
+    <ul id="passes"></ul>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
