@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Satellite Tracker 3D</title>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Cesium.js"></script>
+  <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.120/Build/Cesium/Widgets/widgets.css">
+  <style>
+    html, body { margin: 0; height: 100%; font-family: system-ui, sans-serif; }
+    body { display: flex; }
+    #side { width: 300px; padding: 12px; overflow-y: auto; background: #111; color: #eee; box-sizing: border-box; }
+    #globe { flex: 1; min-width: 0; }
+    a { color: #4af; font-size: 13px; }
+    h3, h4 { margin: 8px 0 4px; }
+    label { display: block; font-size: 12px; color: #aaa; margin-top: 6px; }
+    input, select { width: 100%; padding: 4px; box-sizing: border-box; }
+    ul { list-style: none; padding: 0; margin: 4px 0; font-size: 13px; }
+    #list { max-height: 220px; overflow-y: auto; border: 1px solid #333; }
+    #list li { cursor: pointer; padding: 3px 6px; }
+    #list li:hover { background: #234; color: #4af; }
+    #list li.active { background: #432; color: #f80; }
+    #info { font-size: 13px; line-height: 1.5; }
+    #status { font-size: 11px; color: #888; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div id="side">
+    <h3>Satellite Tracker 3D</h3>
+    <a href="/">← 2D map</a>
+
+    <label>Group</label>
+    <select id="group"></select>
+
+    <label>Search name</label>
+    <input id="q" placeholder="e.g. ISS, NOAA">
+
+    <label>Min inclination (°)</label>
+    <input id="minIncl" type="number" value="0" min="0" max="180">
+
+    <div id="status"></div>
+    <ul id="list"></ul>
+
+    <h4>Orbital parameters</h4>
+    <div id="info">Click a satellite.</div>
+  </div>
+  <div id="globe"></div>
+  <script src="/globe.js"></script>
+</body>
+</html>
